@@ -1,0 +1,10 @@
+{
+    "swift-icu-versions": {
+        "main": "74.1",
+        "6.2": "74.1",
+        "6.1": "74.1"
+    },
+    "icu-source": {
+        "74.1": "https://github.com/unicode-org/icu/archive/refs/tags/release-74-1.tar.gz"
+    }
+}

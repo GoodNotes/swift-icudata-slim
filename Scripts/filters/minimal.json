@@ -1,0 +1,69 @@
+{
+    "localeFilter": {
+        "filterType": "locale",
+        "includeScripts": false,
+        "includelist": [
+            "en_US"
+        ]
+    },
+    "featureFilters": {
+        "brkitr_dictionaries": {
+            "#comment": "ubrk APIs are not used in Foundation",
+            "filterType": "exclude"
+        },
+        "brkitr_rules": {
+            "#comment": "ubrk APIs are not used in Foundation",
+            "filterType": "exclude"
+        },
+        "brkitr_tree": {
+            "#comment": "ubrk APIs are not used in Foundation",
+            "filterType": "exclude"
+        },
+        "brkitr_lstm": {
+            "#comment": "ubrk APIs are not used in Foundation",
+            "filterType": "exclude"
+        },
+        "brkitr_adaboost": {
+            "#comment": "ubrk APIs are not used in Foundation",
+            "filterType": "exclude"
+        },
+        "unit_tree": {
+            "#comment": "umeasfmt APIs are not used in Foundation",
+            "filterType": "exclude"
+        },
+        "stringprep": {
+            "#comment": "usprep APIs are not used in Foundation",
+            "filterType": "exclude"
+        },
+        "region_tree": {
+            "filterType": "exclude"
+        },
+        "zone_tree": {
+            "filterType": "exclude"
+        },
+        "zone_supplemental": {
+            "filterType": "exclude"
+        },
+        "locales_tree": {
+            "filterType": "exclude"
+        },
+        "conversion_mappings": {
+            "filterType": "exclude"
+        },
+        "curr_tree": {
+            "filterType": "exclude"
+        },
+        "translit": {
+            "filterType": "exclude"
+        },
+        "coll_ucadata": {
+            "filterType": "exclude"
+        },
+        "coll_tree": {
+            "filterType": "exclude"
+        },
+        "normalization": {
+            "filterType": "exclude"
+        }
+    }
+}
