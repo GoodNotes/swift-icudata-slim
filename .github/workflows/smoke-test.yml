@@ -1,0 +1,27 @@
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: setup-development
+        run: |
+          toolchain_path="$RUNNER_TEMP/swift"
+          mkdir -p "$toolchain_path"
+          curl -L "https://download.swift.org/development/ubuntu2204/swift-DEVELOPMENT-SNAPSHOT-2025-06-12-a/swift-DEVELOPMENT-SNAPSHOT-2025-06-12-a-ubuntu22.04.tar.gz" | tar xz --strip-component 1 -C "$toolchain_path"
+          echo "$toolchain_path/usr/bin" >> $GITHUB_PATH
+      - uses: swiftwasm/setup-swiftwasm@v2
+        id: setup-swiftwasm
+        with:
+          target: wasm32-unknown-wasi
+      - run: swift build --package-path ./Example --static-swift-stdlib
+      - run: ./Example/.build/debug/Example
+      - run: swift build --package-path ./Example --static-swift-stdlib --traits Minimal
+      - run: ./Example/.build/debug/Example
+      - run: swift build --package-path ./Example --swift-sdk "${{ steps.setup-swiftwasm.outputs.swift-sdk-id }}"
+      - run: wasmkit run ./Example/.build/debug/Example.wasm
+      - run: swift build --package-path ./Example --swift-sdk "${{ steps.setup-swiftwasm.outputs.swift-sdk-id }}" --traits Minimal
+      - run: wasmkit run ./Example/.build/debug/Example.wasm
