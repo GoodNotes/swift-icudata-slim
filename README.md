@@ -38,7 +38,7 @@ If you are unsure whether your app relies on any of these features or APIs, use 
 Add `swift-icudata-slim` to your `Package.swift` dependencies:
 
 ```swift
-.package(url: "https://github.com/GoodNotes/swift-icudata-slim.git", from: "1.0.0")
+.package(url: "https://github.com/GoodNotes/swift-icudata-slim.git", from: "0.2.0")
 ```
 
 Then add it as a dependency to your **executable** target:
