@@ -10,8 +10,8 @@ This package is especially useful for platforms that only support static linking
 | ICU Data Variant      | Data Size | Description |
 |:----------------------|----------:|---------------------------------------------|
 | Default               |   29.3 MB | Full ICU data, all locales and features |
-| `ICUDataSlim`         |    8.5 MB | Excludes some ICU features not used by Foundation; <br/> locale limited to `en_US` (see [default.json](./Scripts/filters/default.json)) |
-| `ICUDataSlim_Minimal` |    1.2 MB | Excludes even more features for a smaller footprint; <br/> locale limited to `en_US` (see [minimal.json](./Scripts/filters/minimal.json)) |
+| `ICUDataSlim`         |    8.6 MB | Excludes some ICU features not used by Foundation; <br/> locale limited to `en_001` (see [default.json](./Scripts/filters/default.json)) |
+| `ICUDataSlim_Minimal` |    1.5 MB | Excludes even more features for a smaller footprint; <br/> locale limited to `en_001` (see [minimal.json](./Scripts/filters/minimal.json)) |
 
 ## When to use minimal
 
@@ -56,6 +56,15 @@ See the [`Example`](./Example) directory for a complete setup.
 
 > [!WARNING]
 > The pre-compiled ICU data included in this package assumes a little endian platform. Big endian platforms are not supported. (Swift does not officially support big endian platforms though)
+
+## FAQ
+
+### Why is `en_001` used as the only available locale?
+
+The slimmed-down variants include only the `en_001` locale.
+On non-Apple platforms, the swift-foundation implementation *always* returns `en_001` by `Locale.current` regardless of environment variables or system locale settings.
+
+For more details, you can refer to the relevant implementation in the [swift-foundation source code](https://github.com/swiftlang/swift-foundation/blob/swift-6.2-DEVELOPMENT-SNAPSHOT-2025-07-08-a/Sources/FoundationEssentials/Locale/Locale_Unlocalized.swift#L39).
 
 ## License
 

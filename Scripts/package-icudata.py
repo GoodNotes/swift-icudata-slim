@@ -116,7 +116,7 @@ def main():
     build_dir = Path(args.build_dir)
     icu_src = download_and_extract(icu_url, build_dir, icu_version)
     destdir = build_dir / "destdir"
-    destdir.mkdir()
+    destdir.mkdir(parents=True, exist_ok=True)
     dat_path, version = build_icu(icu_src, Path(args.filter_json).absolute(), args.jobs, destdir)
     dat_to_c(dat_path, version, args.output)
 

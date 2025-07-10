@@ -3,7 +3,7 @@
         "filterType": "locale",
         "includeScripts": false,
         "includelist": [
-            "en_US"
+            "en_001"
         ]
     },
     "featureFilters": {

@@ -1,12 +1,13 @@
-// The Swift Programming Language
-// https://docs.swift.org/swift-book
-
 import Foundation
 
 @main
 struct Example {
     static func main() {
-        print("Available locales: \(Locale.availableIdentifiers.joined(separator: ", "))")
-        print("Available encodings: \(String.availableStringEncodings.map { "\($0)" }.joined(separator: ", "))")
+        print("Current locale: \(Locale.current.identifier)")
+        print("Available locales: \(Locale.availableIdentifiers)")
+        print("Available encodings: \(String.availableStringEncodings)")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        print("Parsing date: \(dateFormatter.date(from: "2023-10-01T12:00:00").map { "\($0)" } ?? "Failed to parse date!?")")
     }
 }

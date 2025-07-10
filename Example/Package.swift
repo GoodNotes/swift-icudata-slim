@@ -4,6 +4,11 @@ import PackageDescription
 
 let package = Package(
     name: "Example",
+    traits: [
+        .default(enabledTraits: ["Slim"]),
+        "Slim",
+        "Minimal",
+    ],
     dependencies: [
         .package(name: "swift-icudata-slim", path: "../"),
     ],
@@ -11,7 +16,8 @@ let package = Package(
         .executableTarget(
             name: "Example",
             dependencies: [
-                .product(name: "ICUDataSlim", package: "swift-icudata-slim"),
+                .product(name: "ICUDataSlim_Minimal", package: "swift-icudata-slim", condition: .when(traits: ["Minimal"])),
+                .product(name: "ICUDataSlim", package: "swift-icudata-slim", condition: .when(traits: ["Slim"]))
             ]
         ),
     ]
