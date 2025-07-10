@@ -66,6 +66,30 @@ On non-Apple platforms, the swift-foundation implementation *always* returns `en
 
 For more details, you can refer to the relevant implementation in the [swift-foundation source code](https://github.com/swiftlang/swift-foundation/blob/swift-6.2-DEVELOPMENT-SNAPSHOT-2025-07-08-a/Sources/FoundationEssentials/Locale/Locale_Unlocalized.swift#L39).
 
+### I want even smaller ICU data! What can I do?
+
+If you want to make your ICU data even smaller and more tailored to your needs, you can use the `Scripts/package-icudata.py` script to generate a custom C source file. In most cases, it's easiest to specify the Swift version you are targeting. For example:
+
+```sh
+python3 Scripts/package-icudata.py --swift-version 6.2 --filter-json <YOUR_FILTER.json> --output <OUTPUT_C_FILE>
+```
+
+To get the most out of this, you can write your own filter JSON file to control exactly which locales and features are included. For details on how to write these filter files and what options are available, check out the official [ICU Data Build Tool documentation](https://unicode-org.github.io/icu/userguide/icu_data/buildtool.html).
+
+Once you've generated your custom C file, simply include it in your project and link it as needed. This gives you full control over the ICU data size and contents.
+
+> Advanced: If you need to target a specific ICU version instead, you can use `--icu-version <ICU_VERSION>`, but for most people, `--swift-version` is the way to go.
+
+## Development
+
+If you modify or add a filter in the `Scripts/filters/` directory, make sure to re-run the build script to regenerate the ICU data sources:
+
+```sh
+python3 Scripts/build-all.py
+```
+
+This will rebuild all ICU data variants using the updated filters.
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
