@@ -11,7 +11,7 @@ jobs:
         run: |
           toolchain_path="$RUNNER_TEMP/swift"
           mkdir -p "$toolchain_path"
-          curl -L "https://download.swift.org/development/ubuntu2204/swift-DEVELOPMENT-SNAPSHOT-2025-06-12-a/swift-DEVELOPMENT-SNAPSHOT-2025-06-12-a-ubuntu22.04.tar.gz" | tar xz --strip-component 1 -C "$toolchain_path"
+          curl -L "https://download.swift.org/development/ubuntu2204/swift-DEVELOPMENT-SNAPSHOT-2025-11-25-a/swift-DEVELOPMENT-SNAPSHOT-2025-11-25-a-ubuntu22.04.tar.gz" | tar xz --strip-component 1 -C "$toolchain_path"
           echo "$toolchain_path/usr/bin" >> $GITHUB_PATH
       - uses: swiftwasm/setup-swiftwasm@v2
         id: setup-swiftwasm
