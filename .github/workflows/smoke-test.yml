@@ -16,7 +16,7 @@ jobs:
       - uses: swiftwasm/setup-swiftwasm@v2
         id: setup-swiftwasm
         with:
-          target: wasm32-unknown-wasi
+          target: wasm32-unknown-wasip1
       - run: swift build --package-path ./Example --static-swift-stdlib
       - run: ./Example/.build/debug/Example
       - run: swift build --package-path ./Example --static-swift-stdlib --traits Minimal
