@@ -9,7 +9,9 @@ let swiftVersions = [
 ]
 
 let currentSwiftVersion: String?
-#if compiler(>=6.2)
+#if compiler(>=6.3)
+    currentSwiftVersion = "main"
+#elseif compiler(>=6.2)
     currentSwiftVersion = "6_2"
 #elseif compiler(>=6.1)
     currentSwiftVersion = "6_1"
